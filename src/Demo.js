@@ -81,15 +81,14 @@ vec3 renderPixel(vec2 pixel)
     uv.x *= aspect;
     vec2 uv2 = vec2(0.5-uv.x, 0.5-uv.y);
     float r = length(uv2);
-    float rc = 0.0;
+    float p = getP(uv2);
     if (length(uv2 - sp) < WIDTH / 2.0) {
         o = getColor(0.0);
     }
     else if (length(uv2 - ep) < WIDTH / 2.0) {
-        o = getColor(P);
+        o = getColor(p);
     }
     else if (r > INNER && r < OUTER) {
-        float p = getP(uv2);
         if (p < P) {
             vec3 c = getColor(p);
             o = getColor(p);
